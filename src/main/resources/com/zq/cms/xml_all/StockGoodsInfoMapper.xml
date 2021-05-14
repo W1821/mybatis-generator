@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zq.cms.mapper.StockGoodsInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zq.cms.entity.StockGoodsInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="classification_type" jdbcType="INTEGER" property="classificationType" />
+    <result column="goods_classification_id" jdbcType="VARCHAR" property="goodsClassificationId" />
+    <result column="goods_status" jdbcType="INTEGER" property="goodsStatus" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_code" jdbcType="VARCHAR" property="goodsCode" />
+    <result column="origin_place" jdbcType="VARCHAR" property="originPlace" />
+    <result column="shelf_life" jdbcType="INTEGER" property="shelfLife" />
+    <result column="goods_unit" jdbcType="VARCHAR" property="goodsUnit" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="goods_standard" jdbcType="VARCHAR" property="goodsStandard" />
+    <result column="max_stock" jdbcType="INTEGER" property="maxStock" />
+    <result column="min_stock" jdbcType="INTEGER" property="minStock" />
+    <result column="goods_picture_url" jdbcType="VARCHAR" property="goodsPictureUrl" />
+    <result column="storehouse_id" jdbcType="VARCHAR" property="storehouseId" />
+    <result column="stock_quantity" jdbcType="DECIMAL" property="stockQuantity" />
+    <result column="put_in_stock_quantity" jdbcType="DECIMAL" property="putInStockQuantity" />
+    <result column="put_out_stock_quantity" jdbcType="DECIMAL" property="putOutStockQuantity" />
+    <result column="sales_volume" jdbcType="DECIMAL" property="salesVolume" />
+    <result column="return_volume" jdbcType="DECIMAL" property="returnVolume" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="hits" jdbcType="INTEGER" property="hits" />
+  </resultMap>
+</mapper>

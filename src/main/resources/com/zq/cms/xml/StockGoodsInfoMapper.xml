@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zq.cms.mapper.StockGoodsInfoMapper">
+
+    <!-- 列表查询 -->
+    <select id="queryList" resultType="com.zq.cms.pojo.dto.stock.goodsQueryStockGoodsInfoListRes">
+        SELECT
+            t.id AS id,                                                -- 主键
+            t.classification_type AS classificationType,               -- 分类类型，1：商品，2：礼品
+            t.goods_classification_id AS goodsClassificationId,        -- 商品分类id
+            t.goods_status AS goodsStatus,                             -- 商品状态 0：上架，1：下架
+            t.goods_name AS goodsName,                                 -- 商品名称
+            t.goods_code AS goodsCode,                                 -- 商品编码
+            t.origin_place AS originPlace,                             -- 商品产地
+            t.shelf_life AS shelfLife,                                 -- 保质期（天)
+            t.goods_unit AS goodsUnit,                                 -- 计量单位
+            t.price AS price,                                          -- 售价（元）
+            t.goods_standard AS goodsStandard,                         -- 商品规格
+            t.max_stock AS maxStock,                                   -- 库存上限
+            t.min_stock AS minStock,                                   -- 库存下限
+            t.goods_picture_url AS goodsPictureUrl,                    -- 商品图片
+            t.storehouse_id AS storehouseId,                           -- 仓库id
+            t.stock_quantity AS stockQuantity,                         -- 总库存数量
+            t.put_in_stock_quantity AS putInStockQuantity,             -- 入库量
+            t.put_out_stock_quantity AS putOutStockQuantity,           -- 出库量
+            t.sales_volume AS salesVolume,                             -- 销售量
+            t.return_volume AS returnVolume,                           -- 退货量
+            t.version AS version,                                      -- 库存版本号
+            t.create_user AS createUser,                               -- 创建用户
+            t.create_time AS createTime,                               -- 创建时间
+            t.update_user AS updateUser,                               -- 修改用户
+            t.update_time AS updateTime,                               -- 更新时间
+            t.deleted AS deleted,                                      -- 是否删除，0：否，1：是
+            t.hits AS hits,                                            -- 人气点击量
+            t.description AS description                               -- 商品说明
+        FROM
+            stock_goods_info t
+        <where>
+            <if test="null != req.id and req.id != ''">
+                and t.id = #{req.id}                                                -- 主键
+            </if>
+            <if test="null != req.classificationType and req.classificationType != ''">
+                and t.classification_type = #{req.classificationType}               -- 分类类型，1：商品，2：礼品
+            </if>
+            <if test="null != req.goodsClassificationId and req.goodsClassificationId != ''">
+                and t.goods_classification_id = #{req.goodsClassificationId}        -- 商品分类id
+            </if>
+            <if test="null != req.goodsStatus and req.goodsStatus != ''">
+                and t.goods_status = #{req.goodsStatus}                             -- 商品状态 0：上架，1：下架
+            </if>
+            <if test="null != req.goodsName and req.goodsName != ''">
+                and t.goods_name = #{req.goodsName}                                 -- 商品名称
+            </if>
+            <if test="null != req.goodsCode and req.goodsCode != ''">
+                and t.goods_code = #{req.goodsCode}                                 -- 商品编码
+            </if>
+            <if test="null != req.originPlace and req.originPlace != ''">
+                and t.origin_place = #{req.originPlace}                             -- 商品产地
+            </if>
+            <if test="null != req.shelfLife and req.shelfLife != ''">
+                and t.shelf_life = #{req.shelfLife}                                 -- 保质期（天)
+            </if>
+            <if test="null != req.goodsUnit and req.goodsUnit != ''">
+                and t.goods_unit = #{req.goodsUnit}                                 -- 计量单位
+            </if>
+            <if test="null != req.price and req.price != ''">
+                and t.price = #{req.price}                                          -- 售价（元）
+            </if>
+            <if test="null != req.goodsStandard and req.goodsStandard != ''">
+                and t.goods_standard = #{req.goodsStandard}                         -- 商品规格
+            </if>
+            <if test="null != req.maxStock and req.maxStock != ''">
+                and t.max_stock = #{req.maxStock}                                   -- 库存上限
+            </if>
+            <if test="null != req.minStock and req.minStock != ''">
+                and t.min_stock = #{req.minStock}                                   -- 库存下限
+            </if>
+            <if test="null != req.goodsPictureUrl and req.goodsPictureUrl != ''">
+                and t.goods_picture_url = #{req.goodsPictureUrl}                    -- 商品图片
+            </if>
+            <if test="null != req.storehouseId and req.storehouseId != ''">
+                and t.storehouse_id = #{req.storehouseId}                           -- 仓库id
+            </if>
+            <if test="null != req.stockQuantity and req.stockQuantity != ''">
+                and t.stock_quantity = #{req.stockQuantity}                         -- 总库存数量
+            </if>
+            <if test="null != req.putInStockQuantity and req.putInStockQuantity != ''">
+                and t.put_in_stock_quantity = #{req.putInStockQuantity}             -- 入库量
+            </if>
+            <if test="null != req.putOutStockQuantity and req.putOutStockQuantity != ''">
+                and t.put_out_stock_quantity = #{req.putOutStockQuantity}           -- 出库量
+            </if>
+            <if test="null != req.salesVolume and req.salesVolume != ''">
+                and t.sales_volume = #{req.salesVolume}                             -- 销售量
+            </if>
+            <if test="null != req.returnVolume and req.returnVolume != ''">
+                and t.return_volume = #{req.returnVolume}                           -- 退货量
+            </if>
+            <if test="null != req.version and req.version != ''">
+                and t.version = #{req.version}                                      -- 库存版本号
+            </if>
+            <if test="null != req.createUser and req.createUser != ''">
+                and t.create_user = #{req.createUser}                               -- 创建用户
+            </if>
+            <if test="null != req.createTime and req.createTime != ''">
+                and t.create_time = #{req.createTime}                               -- 创建时间
+            </if>
+            <if test="null != req.updateUser and req.updateUser != ''">
+                and t.update_user = #{req.updateUser}                               -- 修改用户
+            </if>
+            <if test="null != req.updateTime and req.updateTime != ''">
+                and t.update_time = #{req.updateTime}                               -- 更新时间
+            </if>
+            <if test="null != req.deleted and req.deleted != ''">
+                and t.deleted = #{req.deleted}                                      -- 是否删除，0：否，1：是
+            </if>
+            <if test="null != req.hits and req.hits != ''">
+                and t.hits = #{req.hits}                                            -- 人气点击量
+            </if>
+            <if test="null != req.description and req.description != ''">
+                and t.description = #{req.description}                              -- 商品说明
+            </if>
+        </where>
+    </select>
+
+    <!-- 详细查询 -->
+    <select id="queryById" resultType="com.zq.cms.pojo.dto.stock.goodsQueryStockGoodsInfoRes">
+        SELECT
+            t.id AS id,                                                -- 主键
+            t.classification_type AS classificationType,               -- 分类类型，1：商品，2：礼品
+            t.goods_classification_id AS goodsClassificationId,        -- 商品分类id
+            t.goods_status AS goodsStatus,                             -- 商品状态 0：上架，1：下架
+            t.goods_name AS goodsName,                                 -- 商品名称
+            t.goods_code AS goodsCode,                                 -- 商品编码
+            t.origin_place AS originPlace,                             -- 商品产地
+            t.shelf_life AS shelfLife,                                 -- 保质期（天)
+            t.goods_unit AS goodsUnit,                                 -- 计量单位
+            t.price AS price,                                          -- 售价（元）
+            t.goods_standard AS goodsStandard,                         -- 商品规格
+            t.max_stock AS maxStock,                                   -- 库存上限
+            t.min_stock AS minStock,                                   -- 库存下限
+            t.goods_picture_url AS goodsPictureUrl,                    -- 商品图片
+            t.storehouse_id AS storehouseId,                           -- 仓库id
+            t.stock_quantity AS stockQuantity,                         -- 总库存数量
+            t.put_in_stock_quantity AS putInStockQuantity,             -- 入库量
+            t.put_out_stock_quantity AS putOutStockQuantity,           -- 出库量
+            t.sales_volume AS salesVolume,                             -- 销售量
+            t.return_volume AS returnVolume,                           -- 退货量
+            t.version AS version,                                      -- 库存版本号
+            t.create_user AS createUser,                               -- 创建用户
+            t.create_time AS createTime,                               -- 创建时间
+            t.update_user AS updateUser,                               -- 修改用户
+            t.update_time AS updateTime,                               -- 更新时间
+            t.deleted AS deleted,                                      -- 是否删除，0：否，1：是
+            t.hits AS hits,                                            -- 人气点击量
+            t.description AS description                               -- 商品说明
+        FROM
+            stock_goods_info t
+        WHERE
+            t.id = #{id}
+        AND t.deleted = 0
+    </select>
+
+
+</mapper>

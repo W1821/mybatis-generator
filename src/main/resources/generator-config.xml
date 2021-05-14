@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="OracleContext" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- 插件 -->
+        <plugin type="com.humki.mbg.plugin.MapperXmlPlugin">
+            <property name="entitySuperClass" value="com.zq.cms.common.bean.BaseBean"/>
+            <property name="controller" value="com.zq.cms.controller"/>
+            <property name="service" value="com.zq.cms.service"/>
+            <property name="dto" value="com.zq.cms.pojo.dto"/>
+            <!-- 自定义的映射文件 -->
+            <property name="xml" value="com.zq.cms.xml"/>
+        </plugin>
+
+        <!--生成mapper.xml时覆盖原文件-->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="addRemarkComments" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/xxx"
+                        userId="root"
+                        password="root">
+            <property name="remarksReporting" value="true"/>
+            <property name="useInformationSchema" value="true"/>
+            <!--解决mysql驱动升级到8.0后不生成指定数据库代码的问题-->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.zq.cms.entity" targetProject=".\src\main\resources"/>
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="com.zq.cms.xml_all" targetProject=".\src\main\resources"/>
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zq.cms.mapper" targetProject=".\src\main\resources"/>
+
+        <table tableName="xxx" domainObjectName="xxx"/>
+
+    </context>
+</generatorConfiguration>
